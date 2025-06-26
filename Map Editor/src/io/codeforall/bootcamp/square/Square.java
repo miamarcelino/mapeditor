@@ -10,11 +10,11 @@ import static io.codeforall.bootcamp.grid.Grid.PADDING;
 public class Square{
 
 	Rectangle square;
-	private int col;
-	private int row;
+	private int col = 0;
+	private int row = 0;
 
 	public Square() {
-		square = new Rectangle(PADDING, PADDING, CELLSIZE, CELLSIZE);
+		square = new Rectangle(Grid.PADDING, Grid.PADDING, Grid.CELLSIZE, Grid.CELLSIZE);
 		makeSquare();
 	}
 
@@ -24,20 +24,28 @@ public class Square{
 	}
 
 	public void moveUp() {
-		square.translate(0, -20);
-		col -= 1;
+		if (row > 0) {
+			square.translate(0, -20);
+			row -= 1;
+		}
 	}
 	public void moveDown() {
-		square.translate(0, 20);
-		col += 1;
+		if (row < 19) {
+			square.translate(0, 20);
+			row += 1;
+		}
 	}
 	public void moveLeft() {
-		square.translate(-20, 0);
-		row -= 1;
+		if (col > 0) {
+			square.translate(-20, 0);
+			col -= 1;
+		}
 	}
 	public void moveRight() {
-		square.translate(20, 0);
-		row += 1;
+		if (col < 19) {
+			square.translate(20, 0);
+			col += 1;
+		}
 	}
 
 
