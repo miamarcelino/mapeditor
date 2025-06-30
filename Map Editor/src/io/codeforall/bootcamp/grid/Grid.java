@@ -19,10 +19,6 @@ public class Grid{
 		grid = new Rectangle[cols][rows];
 		makeGrid();
 	}
-
-
-
-
 	public void makeGrid() {
 		for (int col = 0; col < cols; col++) {
 			for (int row = 0; row < rows; row++) {
@@ -46,5 +42,15 @@ public class Grid{
 	public void clearCell(int col, int row) {
 		grid[col][row].draw();
 	}
+
+	public void clearAll() {
+		for (int col = 0; col < cols; col++) {
+			for (int row = 0; row < rows; row++) {
+				grid[col][row].setColor(Color.BLACK);
+				grid[col][row].draw();
+			}
+		}
+	}
+
 
 }

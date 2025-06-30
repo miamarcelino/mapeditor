@@ -21,6 +21,7 @@ public class MyKeyboardHandler implements KeyboardHandler {
 		KeyboardEvent moveLeft = new KeyboardEvent();
 		KeyboardEvent moveRight = new KeyboardEvent();
 		KeyboardEvent clearKey = new KeyboardEvent();
+		KeyboardEvent clearAll = new KeyboardEvent();
 
 		spaceKey.setKey(KeyboardEvent.KEY_SPACE);
 		spaceKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
@@ -37,6 +38,9 @@ public class MyKeyboardHandler implements KeyboardHandler {
 		clearKey.setKey(KeyboardEvent.KEY_C);
 		clearKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
+		clearAll.setKey(KeyboardEvent.KEY_A);
+		clearAll.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
 		keyboard.addEventListener(spaceKey);
 
 		keyboard.addEventListener(moveUp);
@@ -45,6 +49,8 @@ public class MyKeyboardHandler implements KeyboardHandler {
 		keyboard.addEventListener(moveRight);
 
 		keyboard.addEventListener(clearKey);
+
+		keyboard.addEventListener(clearAll);
 	}
 
 	@Override
@@ -52,7 +58,7 @@ public class MyKeyboardHandler implements KeyboardHandler {
 		switch (keyboardEvent.getKey()) {
 
 			case KeyboardEvent.KEY_SPACE:
-				myGrid.paintCell(mySquare.getRow(), mySquare.getCol());
+				myGrid.paintCell(mySquare.getCol(), mySquare.getRow());
 				break;
 			case KeyboardEvent.KEY_UP:
 				mySquare.moveUp();
@@ -67,7 +73,10 @@ public class MyKeyboardHandler implements KeyboardHandler {
 				mySquare.moveRight();
 				break;
 			case KeyboardEvent.KEY_C:
-				myGrid.clearCell(mySquare.getRow(), mySquare.getCol());
+				myGrid.clearCell(mySquare.getCol(), mySquare.getRow());
+				break;
+			case KeyboardEvent.KEY_A:
+				myGrid.clearAll();
 				break;
 
 		}
